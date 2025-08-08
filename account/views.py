@@ -79,7 +79,7 @@ def edit_profile(request):
             instance=request.user.profile,
             files=request.FILES
         )
-        if user_form.is_valid and profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, message="Profile updated successfully!")
