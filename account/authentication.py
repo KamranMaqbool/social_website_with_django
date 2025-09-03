@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 
+from account.models import Profile
+
 
 class EmailAuthBackend:
     """
@@ -9,7 +11,6 @@ class EmailAuthBackend:
         try:
             user = User.objects.get(email=username)
             if user.check_password(password):
-                print("check password True.....................................")
                 return user
             else:
                 return None
@@ -21,3 +22,10 @@ class EmailAuthBackend:
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+
+
+def create_profile(backend, user, *args, **kwargs):
+    """
+    Here we create a profile object when user login from Social Auth
+    """
+    return Profile.objects.create(user=user)
