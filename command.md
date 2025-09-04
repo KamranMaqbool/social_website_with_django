@@ -15,3 +15,6 @@ extension of Django Extensions. Use the following command to install Werkzeug:)
 
 python manage.py runserver_plus --cert-file cert.crt
 (Run webiste for https)
+
+python manage.py runserver_plus --cert-file cert.crt --key-file cert.key 0.0.0.0:8000
+
